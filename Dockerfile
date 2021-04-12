@@ -23,7 +23,7 @@ ENV PATH $CONDA_DIR/envs/${conda_env}/bin:$PATH
 USER root
 
 # Spark dependencies
-ENV APACHE_SPARK_VERSION=2.4.7 \
+ENV APACHE_SPARK_VERSION=2.4.6 \
     HADOOP_VERSION=2.7
 
 RUN apt-get -y update && \
@@ -34,7 +34,7 @@ RUN apt-get -y update && \
 WORKDIR /tmp
 
 # hadolint ignore=SC2046
-RUN wget -q https://downloads.apache.org/spark/spark-${APACHE_SPARK_VERSION}/spark-${APACHE_SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}.tgz && \
+RUN wget -q https://archive.apache.org/dist/spark/spark-${APACHE_SPARK_VERSION}/spark-${APACHE_SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}.tgz && \
     tar xzf "spark-${APACHE_SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}.tgz" -C /usr/local --owner root --group root --no-same-owner && \
     rm "spark-${APACHE_SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}.tgz"
 
