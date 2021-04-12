@@ -36,7 +36,7 @@ services:
       - '19630:19630'
   jupyter-notebook:
     build: ./
-    image: ucf/pyspark-notebook:spark-2.4.7
+    image: ucf/pyspark-notebook:spark-2.4.6
     container_name: jupyter-notebook
     ports:
       - '8888:8888'
