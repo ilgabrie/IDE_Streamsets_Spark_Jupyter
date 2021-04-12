@@ -1,0 +1,41 @@
+version: '3'
+
+services:
+  spark-master:
+    image: docker.io/bitnami/spark:2.4.6
+    environment:
+      - SPARK_MODE=master
+      - SPARK_RPC_AUTHENTICATION_ENABLED=no
+      - SPARK_RPC_ENCRYPTION_ENABLED=no
+      - SPARK_LOCAL_STORAGE_ENCRYPTION_ENABLED=no
+      - SPARK_SSL_ENABLED=no
+    ports:
+      - '8080:8080'
+  spark-worker:
+    image: docker.io/bitnami/spark:2.4.6
+    environment:
+      - SPARK_MODE=worker
+      - SPARK_MASTER_URL=spark://spark-master:7077
+      - SPARK_WORKER_MEMORY=2G
+      - SPARK_WORKER_CORES=1
+      - SPARK_RPC_AUTHENTICATION_ENABLED=no
+      - SPARK_RPC_ENCRYPTION_ENABLED=no
+      - SPARK_LOCAL_STORAGE_ENCRYPTION_ENABLED=no
+      - SPARK_SSL_ENABLED=no
+  streamsets-datacollector:
+    image: docker.io/streamsets/datacollector
+    container_name: streamsets-dc
+    restart: on-failure
+    ports:
+      - '18630:18630'
+  streamsets-transformer:
+    image: docker.io/streamsets/transformer
+    container_name: streamsets-transformer
+    restart: on-failure
+    ports:
+      - '19630:19630'
+  jupyter-notebook:
+    image: jupyter/pyspark-notebook:spark-2.4.7
+    container_name: jupyter-notebook
+    ports:
+      - '8888:8888'
