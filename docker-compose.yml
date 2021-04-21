@@ -53,3 +53,4 @@ services:
     environment:
       - "MASTER=spark://spark-master:7077"
       - "SPARK_MASTER=spark://spark-master:7077"
+      - "SPARK_HOME=/usr/local/spark"
