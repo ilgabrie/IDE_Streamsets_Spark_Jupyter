@@ -56,4 +56,3 @@ services:
       - SPARK_HOME=/usr/local/spark
       - PYSPARK_PYTHON=python3
       - PYSPARK_DRIVER_PYTHON=python3
-      - SPARK_SUBMIT_OPTIONS="--deploy-mode cluster --executor-memory 2G"
