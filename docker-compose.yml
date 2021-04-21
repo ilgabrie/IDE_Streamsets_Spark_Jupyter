@@ -35,8 +35,18 @@ services:
     ports:
       - '19630:19630'
   jupyter-notebook:
-    build: ./
+    build:
+      context: .
+      dockerfile: Dockerfile-jupyter
     image: ucf/pyspark-notebook:spark-2.4.6
     container_name: jupyter-notebook
     ports:
       - '8888:8888'
+  zeppelin-notebook:
+    build:
+      context: .
+      dockerfile: Dockerfile-zeppelin
+    image: ucf/zeppelin:0.9.0
+    container_name: zeppelin-notebook
+    ports:
+      - '8088:8080'
