@@ -51,9 +51,9 @@ services:
     ports:
       - '8088:8080'
     environment:
-      - "MASTER=spark://spark-master:7077"
-      - "SPARK_MASTER=spark://spark-master:7077"
-      - "SPARK_HOME=/usr/local/spark"
-      - "PYSPARK_PYTHON=python3"
-      - "PYSPARK_DRIVER_PYTHON=python3"
-      - "SPARK_SUBMIT_OPTIONS='--deploy-mode cluster --executor-memory 2G'"
+      - MASTER=spark://spark-master:7077
+      - SPARK_MASTER=spark://spark-master:7077
+      - SPARK_HOME=/usr/local/spark
+      - PYSPARK_PYTHON=python3
+      - PYSPARK_DRIVER_PYTHON=python3
+      - SPARK_SUBMIT_OPTIONS="--deploy-mode cluster --executor-memory 2G"
