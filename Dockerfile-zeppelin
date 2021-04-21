@@ -10,6 +10,6 @@ RUN wget -q https://archive.apache.org/dist/spark/spark-${APACHE_SPARK_VERSION}/
 
 WORKDIR /usr/local
 RUN ln -s "spark-${APACHE_SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}" spark
-USER zeppelin
+USER 1000
 # Configure Spark
 ENV SPARK_HOME=/usr/local/spark
